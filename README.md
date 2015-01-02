@@ -10,10 +10,10 @@ This module resolves urls for [CanJS](http://canjs.com/) view templates.
 var renderer = can.view('./grid.mustache');
 
 //-t can-viewurlify
-var renderer = can.view('src/components/grid/grid.mustache);
+var renderer = can.view('src/components/grid/grid.mustache');
 
 //-t can-viewurlify with custom prefix: 'base'
-var renderer = can.view('base/src/components/grid/grid.mustache);
+var renderer = can.view('base/src/components/grid/grid.mustache');
 ```
 ##How it works?
 It parses a file to AST and replace all String Literal nodes ending with `.ejs`, `.mustache`, `.stache` with `cwd` relative path (unix separator).
