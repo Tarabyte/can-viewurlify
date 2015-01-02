@@ -10,7 +10,8 @@ var path = require('path');
  * Default settings.
  */
 var defaults = {
-  extensions: ['ejs', 'mustache', 'stache']
+  extensions: ['ejs', 'mustache', 'stache'],
+  prefix: ''
 };
 
 function isLiteral(node) {
@@ -39,11 +40,13 @@ function fixUrls(file, options) {
       extensions = [],
       cwd = process.cwd(),
       directory = path.dirname(file),
-      shouldTransform = false;
+      shouldTransform = false,
+      prefix;
   options = merge(true, defaults, options || {});
   
   
   extensions = options.extensions;
+  prefix = options.prefix;
   
   function isTemplatePath(str) {
     var ext = path.extname(str).substr(1);
@@ -51,8 +54,8 @@ function fixUrls(file, options) {
   }
   
   function fixPath(url) {  
-    return path
-      .relative(cwd, path.join(directory, url))
+    return path.join(prefix, path
+      .relative(cwd, path.join(directory, url)))
       .split(path.sep) //we need nix pathes \\ --> /
       .join('/');
     

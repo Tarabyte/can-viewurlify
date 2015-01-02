@@ -1,0 +1,1 @@
+can.view('./template.mustache');

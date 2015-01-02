@@ -7,12 +7,14 @@ var urlfixer = require('../');
 /**
  * Test constructor.
  * @param {String} name File path.
+ * @param {Object} [options] Additional options for test.
  */
-function Test(name) {
+function Test(name, options) {
   var ext = path.extname(name);
 
   this.extension = ext;
   this.file = name;
+  this.options = options;
   this.expected = path.join(
     path.dirname(name),
     path.basename(name, ext) + '.expect' + ext);
@@ -23,7 +25,7 @@ function Test(name) {
  */
 Test.prototype.run = function() {
   var file = this.file,
-      stream = urlfixer(file),
+      stream = urlfixer(file, this.options),
       expected = fs.readFileSync(this.expected, 'utf-8');
   
   it('should be called', function() {
