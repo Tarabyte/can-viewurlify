@@ -27,5 +27,12 @@
     "gulp-mocha": "^2.0.0",
     "gulp": "^3.8.10",
     "gulp-jshint": "^1.9.0"
+  },
+  "dependencies": {
+    "through2": "^0.6.3",
+    "estraverse": "^1.9.1",
+    "esprima": "^1.2.2",
+    "escodegen": "^1.4.3",
+    "merge": "^1.2.0"
   }
 }
